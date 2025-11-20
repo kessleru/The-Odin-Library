@@ -101,21 +101,39 @@ header h1 {
 
 /* list-books */
 .list-books {
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .cabecalho {
   display: flex;
-  flex-wrap: wrap;
-  margin-left: 75px;
-  width: 443px;
-  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
   margin-bottom: 20px;
+  gap: 15px;
 }
 
 .cabecalho h1 {
   font: 700 0.9rem 'IBM Plex Sans';
   color: #7c756c;
+}
+
+.cabecalho-cover {
+  flex-shrink: 0;
+  width: 50px;
+}
+
+.cabecalho-title {
+  flex: 1;
+  min-width: 200px;
+}
+
+.cabecalho-author {
+  flex: 1;
+  min-width: 200px;
+}
+
+.cabecalho-info {
+  padding-right: 46px;
 }
 
 .books {
