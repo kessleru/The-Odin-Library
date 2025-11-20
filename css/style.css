@@ -1,0 +1,100 @@
+/* reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  background-color: #f6f1e9;
+}
+
+h1,
+h2,
+h3,
+h4,
+ul,
+blockquote,
+p,
+dd {
+  margin: 0px;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* global */
+.container {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* header */
+header {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid #ebe8e3;
+}
+
+header h1 {
+  font: 700 1.2rem 'IBM Plex Sans';
+  letter-spacing: 0.1rem;
+  color: #4a4540;
+}
+
+/* my-books */
+.my-books {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ebe8e3;
+}
+
+.my-books h1 {
+  font: 700 1.5rem 'IBM Plex Sans';
+  color: #4a4540;
+}
+
+.my-books button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 42px;
+  width: 145px;
+  background: #ccad7a;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.my-books button:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 2px 5px 10px rgba(74, 69, 64, 0.1);
+}
+
+.my-books button p {
+ font: 700 1rem 'IBM Plex Sans';
+ color: #f6f1e9;
+}
