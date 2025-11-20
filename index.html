@@ -1,38 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- fontes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <!-- fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
 
-  <title>The Odin Library</title>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <div class="logo">
-        <a href="./">
-          <img src="img/odin-logo.svg" alt="Logo">
-        </a>
-      </div>
+    <title>The Odin Library</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <a href="./">
+            <img src="img/odin-logo.svg" alt="Logo" />
+          </a>
+        </div>
 
-      <div class="titulo">
-        <h1>THE ODIN LIBRARY</h1>
-      </div>
-    </header>
+        <div class="titulo">
+          <h1>THE ODIN LIBRARY</h1>
+        </div>
+      </header>
 
-    <main>
-      <section class="my-books">
-        <h1>My Books</h1>
-        <button class="add-book"><img src="img/add.svg" alt="Adicionar"><p>Add Book</p></button>
-      </section>
-    </main>
-  </div>
-</body>
+      <main>
+        <section class="my-books">
+          <h1>My Books</h1>
+          <button class="add-book">
+            <img src="img/add.svg" alt="Adicionar" />
+            <p>Add Book</p>
+          </button>
+        </section>
+        <section class="list-books">
+          <div class="cabecalho">
+            <h1>TITLE</h1>
+            <h1>AUTHOR</h1>
+          </div>
+          <section class="books">
+            <ul>
+              <li class="book-item">
+                <div class="book-cover">
+                  <img src="img/livro2.png" alt="capa de livro" />
+                </div>
+                <div class="book-title">
+                  <h2>THE FINAL GAMBIT</h2>
+                </div>
+                <div class="book-author">
+                  <h2>JENNIFER LYNN BARNES</h2>
+                </div>
+                <div class="book-info">
+                  <a href=""><img src="img/info.svg" alt="info de um livro"></a>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
