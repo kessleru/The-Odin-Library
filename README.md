@@ -1,2 +1,2 @@
-![Preview da interface](./Preview.png)
+Em construção...
 
