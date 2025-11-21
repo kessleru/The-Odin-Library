@@ -89,8 +89,8 @@ header h1 {
 }
 
 .my-books button:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 2px 5px 10px rgba(74, 69, 64, 0.1);
+  transform: translateY(-1.5px);
+  box-shadow: 2px 4px 10px rgba(74, 69, 64, 0.1);
 }
 
 .my-books button p {
