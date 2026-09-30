@@ -8,11 +8,55 @@
       <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000000" flood-opacity=".28"/>
     </filter>
     <clipPath id="recorte"><rect width="428" height="252" rx="18"/></clipPath>
+    <clipPath id="moldura"><rect width="1200" height="380" rx="24"/></clipPath>
   </defs>
 
   <rect width="1200" height="380" rx="24" fill="url(#bg)"/>
   <circle cx="1105" cy="60" r="190" fill="#ccad7a" opacity="0.14"/>
   <circle cx="110" cy="360" r="150" fill="#ccad7a" opacity="0.11200000000000002"/>
+  <g clip-path="url(#moldura)">
+  <g transform="translate(740,52)">
+    <rect x="-20" y="250" width="440" height="14" rx="3" fill="#f6f1e9"/>
+    <rect x="-20" y="264" width="440" height="8" fill="#000000" opacity=".15"/>
+    
+    <rect x="0" y="100" width="44" height="150" rx="3" fill="#a78347"/>
+    <rect x="0" y="112" width="44" height="3" fill="#f6f1e9" opacity=".5"/>
+    <text transform="translate(27,236) rotate(-90)" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="13" font-weight="600" fill="#f6f1e9">O Hobbit</text>
+    <circle cx="22" cy="88" r="6" fill="#2f9e44"/>
+    <rect x="50" y="80" width="50" height="170" rx="3" fill="#4a4540"/>
+    <rect x="50" y="92" width="50" height="3" fill="#f6f1e9" opacity=".5"/>
+    <text transform="translate(80,236) rotate(-90)" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="13" font-weight="600" fill="#f6f1e9">Dom Casmurro</text>
+    <circle cx="75" cy="68" r="6" fill="#e03131"/>
+    <rect x="106" y="118" width="38" height="132" rx="3" fill="#ccad7a"/>
+    <rect x="106" y="130" width="38" height="3" fill="#f6f1e9" opacity=".5"/>
+    <text transform="translate(130,236) rotate(-90)" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="13" font-weight="600" fill="#f6f1e9">1984</text>
+    <circle cx="125" cy="106" r="6" fill="#2f9e44"/>
+    <rect x="150" y="64" width="56" height="186" rx="3" fill="#7c756c"/>
+    <rect x="150" y="76" width="56" height="3" fill="#f6f1e9" opacity=".5"/>
+    <text transform="translate(183,236) rotate(-90)" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="13" font-weight="600" fill="#f6f1e9">O Pequeno Príncipe</text>
+    <circle cx="178" cy="52" r="6" fill="#e03131"/>
+    <rect x="212" y="90" width="46" height="160" rx="3" fill="#8b5e34"/>
+    <rect x="212" y="102" width="46" height="3" fill="#f6f1e9" opacity=".5"/>
+    <text transform="translate(240,236) rotate(-90)" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="13" font-weight="600" fill="#f6f1e9">Grande Sertão</text>
+    <circle cx="235" cy="78" r="6" fill="#e03131"/>
+    <svg x="300" y="70" width="110" height="150" viewBox="0 0 44 60" ><path fill-rule="evenodd" clip-rule="evenodd" d="M8.68927 35.4922L13.148 20.0493H30.9831L35.4419 35.4922H8.68927Z" fill="#EED9C3"/>
+<ellipse cx="27.7848" cy="27.8815" rx="1.26005" ry="1.24284" fill="#353535"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M19.446 26.4685C19.446 26.0344 19.0892 25.6826 18.6493 25.6826C17.6381 25.6826 15.9035 25.6826 14.8922 25.6826C14.4524 25.6826 14.0955 26.0344 14.0955 26.4685C14.0955 27.1449 14.0955 28.1309 14.0955 28.9019C14.0955 29.5527 14.6306 30.0805 15.2903 30.0805C15.6996 30.0805 16.1763 30.0805 16.6579 30.0805C17.3973 30.0805 18.1063 29.7907 18.6295 29.2748C19.1523 28.7594 19.446 28.0597 19.446 27.3305C19.446 27.0178 19.446 26.7214 19.446 26.4685Z" fill="#A78347"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M35.0003 5.29008L43.8516 0.759277L39.0002 18.7593L35.0002 22.7593L35.0003 5.29008Z" fill="#E3B261"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.85146 5.29008L0.000193596 0.759277L4.85162 18.7593L8.85162 22.7593L8.85146 5.29008Z" fill="#E3B261"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M35.4419 13.5028C35.4419 13.5028 28.7537 9.10498 22.0656 9.10498C15.3774 9.10498 8.68927 13.5028 8.68927 13.5028V26.6964L10.4728 30.2147C11.7525 25.352 17.5443 23.3263 21.5759 26.3314L22.0656 26.6964L22.5553 26.3314C26.5868 23.3263 32.3786 25.352 33.6583 30.2147L35.4419 26.6964V13.5028Z" fill="#E3B261"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6068 33.2935L14.0398 53.9634L9.12134 50.4451L13.148 35.4924L17.6068 33.2935Z" fill="#D4D4D4"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M26.5244 33.2935L30.0914 53.9634L35.0098 50.4451L30.9831 35.4924L26.5244 33.2935Z" fill="#D5D5D5"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.68927 26.6968L5.12225 39.8904L9.58102 48.6861L13.148 35.4925L8.68927 26.6968Z" fill="#E6E6E6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M35.4418 26.6968L39.0089 39.8904L34.5501 48.6861L30.9831 35.4925L35.4418 26.6968Z" fill="#E6E6E6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6068 33.2937L13.5939 54.8432L22.0655 59.2411L30.5372 54.8432L26.5243 33.2937L22.3981 31.2588L22.0655 31.0947L17.6068 33.2937Z" fill="#E6E6E6"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M23.6636 34.1729H20.5425C20.5425 34.1729 20.5425 34.694 20.5425 35.2732C20.5425 35.6813 20.707 36.0723 20.9995 36.3608C21.292 36.6493 21.6884 36.8116 22.1022 36.8116C22.1026 36.8116 22.1035 36.8116 22.1039 36.8116C22.5177 36.8116 22.9141 36.6493 23.2066 36.3608C23.4991 36.0723 23.6636 35.6813 23.6636 35.2732C23.6636 34.694 23.6636 34.1729 23.6636 34.1729Z" fill="#353535"/></svg>
+    <g font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" font-weight="600">
+      <circle cx="4" cy="6" r="6" fill="#2f9e44"/><text x="16" y="10" fill="#f6f1e9">Read</text>
+      <circle cx="70" cy="6" r="6" fill="#e03131"/><text x="82" y="10" fill="#f6f1e9">Unread</text>
+    </g>
+  </g>
+  </g>
 
   <text x="72" y="148" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="52" font-weight="800" letter-spacing="-1" fill="#ffffff">The Odin Library</text>
   <text x="74" y="196" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="24" font-weight="600" fill="#ffffff">Sua estante de livros no navegador</text>
@@ -27,26 +71,5 @@
     <circle cx="401" cy="278" r="4" fill="#f6f1e9"/><text x="413" y="283" fill="#f6f1e9">Remover</text>
   </g>
 
-  <g transform="translate(700,64)">
-    <rect width="428" height="252" rx="18" fill="#0d1117" filter="url(#sombra)"/>
-    <g clip-path="url(#recorte)">
-    <rect width="428" height="252" rx="18" fill="#0d1117"/>
-    <path d="M0 18a18 18 0 0 1 18-18h392a18 18 0 0 1 18 18v12H0z" fill="#161b22"/>
-    <circle cx="22" cy="16" r="4.5" fill="#ff5f57"/><circle cx="38" cy="16" r="4.5" fill="#febc2e"/><circle cx="54" cy="16" r="4.5" fill="#28c840"/>
-    <text x="241" y="20" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace,'Noto Color Emoji','Apple Color Emoji','Segoe UI Emoji'" font-size="11" fill="#7d8590">script.js</text>
-    <g font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace,'Noto Color Emoji','Apple Color Emoji','Segoe UI Emoji'" font-size="13" fill="#c9d1d9">
-    <text x="20" y="57.4" xml:space="preserve"><tspan fill="#79c0ff">class</tspan><tspan> </tspan><tspan fill="#f2cc60">Book</tspan><tspan> {</tspan></text>
-    <text x="20" y="75.22" xml:space="preserve"><tspan>  </tspan><tspan fill="#79c0ff">constructor</tspan><tspan>(title, author, read = </tspan><tspan fill="#a5d6ff">false</tspan><tspan>) {</tspan></text>
-    <text x="20" y="93.03999999999999" xml:space="preserve"><tspan>    </tspan><tspan fill="#79c0ff">this</tspan><tspan>.title = title;</tspan></text>
-    <text x="20" y="110.86" xml:space="preserve"><tspan>    </tspan><tspan fill="#79c0ff">this</tspan><tspan>.author = author;</tspan></text>
-    <text x="20" y="128.68" xml:space="preserve"><tspan>    </tspan><tspan fill="#79c0ff">this</tspan><tspan>.read = read;</tspan></text>
-    <text x="20" y="146.5" xml:space="preserve"><tspan>  }</tspan></text>
-    <text x="20" y="164.32" xml:space="preserve"><tspan></tspan></text>
-    <text x="20" y="182.14000000000001" xml:space="preserve"><tspan>  </tspan><tspan fill="#d2a8ff">toggleRead</tspan><tspan>() {</tspan></text>
-    <text x="20" y="199.96" xml:space="preserve"><tspan>    </tspan><tspan fill="#79c0ff">this</tspan><tspan>.read = !</tspan><tspan fill="#79c0ff">this</tspan><tspan>.read;</tspan></text>
-    <text x="20" y="217.78" xml:space="preserve"><tspan>  }</tspan></text>
-    <text x="20" y="235.6" xml:space="preserve"><tspan>}</tspan></text>
-    </g>
-    </g>
-  </g>
+
 </svg>

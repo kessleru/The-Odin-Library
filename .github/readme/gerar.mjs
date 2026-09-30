@@ -6,7 +6,7 @@
  * Sem dependências. Todo texto de terminal nas cenas lá embaixo é cópia de uma
  * execução real — se a saída mudar, cole a nova e rode de novo.
  */
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const SAIDA = import.meta.dirname;
@@ -130,7 +130,7 @@ ${linhasSvg(linhas, { x: 20, y0: +(44 + alturaLinha * 0.75).toFixed(1), alturaLi
     </g>`;
 }
 
-function banner({ arquivo, titulo, tagline, stack, pills = [], cores, card, rotulo }) {
+function banner({ arquivo, titulo, tagline, stack, pills = [], cores, card, arte = '', defs = '', circulos = true, rotulo }) {
   const { de, ate, texto = '#ffffff', suave = 'rgba(255,255,255,.78)', circulo = '#ffffff', circuloOpacidade = 0.08 } = cores;
   const tamanhoTitulo = titulo.length > 16 ? 44 : 52;
 
@@ -163,11 +163,14 @@ function banner({ arquivo, titulo, tagline, stack, pills = [], cores, card, rotu
       <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000000" flood-opacity=".28"/>
     </filter>
     <clipPath id="recorte"><rect width="428" height="252" rx="18"/></clipPath>
+    <clipPath id="moldura"><rect width="1200" height="380" rx="24"/></clipPath>${defs}
   </defs>
 
   <rect width="1200" height="380" rx="24" fill="url(#bg)"/>
-  <circle cx="1105" cy="60" r="190" fill="${circulo}" opacity="${circuloOpacidade}"/>
-  <circle cx="110" cy="360" r="150" fill="${circulo}" opacity="${circuloOpacidade * 0.8}"/>
+${circulos ? `  <circle cx="1105" cy="60" r="190" fill="${circulo}" opacity="${circuloOpacidade}"/>
+  <circle cx="110" cy="360" r="150" fill="${circulo}" opacity="${circuloOpacidade * 0.8}"/>` : ''}
+  <g clip-path="url(#moldura)">${arte}
+  </g>
 
   <text x="72" y="148" font-family="${FONTE_UI}" font-size="${tamanhoTitulo}" font-weight="800" letter-spacing="-1" fill="${texto}">${escapar(titulo)}</text>
   <text x="74" y="196" font-family="${FONTE_UI}" font-size="24" font-weight="600" fill="${texto}">${escapar(tagline)}</text>
@@ -177,15 +180,38 @@ function banner({ arquivo, titulo, tagline, stack, pills = [], cores, card, rotu
     ${pillsSvg}
   </g>
 
-  <g transform="translate(700,64)">
+${card ? `  <g transform="translate(700,64)">
     <rect width="428" height="252" rx="18" fill="${card.fundo ?? '#ffffff'}" filter="url(#sombra)"/>
     <g clip-path="url(#recorte)">${card.conteudo}
     </g>
-  </g>
+  </g>` : ''}
 </svg>
 `;
   writeFileSync(join(SAIDA, arquivo), svg);
   console.log(`✓ ${arquivo}  (1200×380)`);
+}
+
+/**
+ * Embute um SVG do próprio repositório (logo, ícone) dentro do banner, na
+ * caixa x/y/largura/altura. Ids ganham prefixo para não colidirem entre si.
+ * `trocar` substitui cores literais (ex.: { white: '#1a1a1a' }).
+ */
+function svgArquivo(caminho, { x, y, largura, altura, trocar = {}, extra = '' }) {
+  let bruto = readFileSync(join(SAIDA, '..', '..', caminho), 'utf8')
+    .replace(/<\?xml[^>]*>/g, '')
+    .replace(/<!--[\s\S]*?-->/g, '');
+  const raiz = bruto.match(/<svg[ >][^>]*>/)[0];
+  const viewBox =
+    (raiz.match(/viewBox="([^"]+)"/) ?? [])[1] ??
+    `0 0 ${parseFloat(raiz.match(/width="([^"]+)"/)[1])} ${parseFloat(raiz.match(/height="([^"]+)"/)[1])}`;
+  const prefixo = caminho.replace(/[^a-z0-9]/gi, '');
+  let miolo = bruto.slice(bruto.indexOf(raiz) + raiz.length, bruto.lastIndexOf('</svg>'));
+  miolo = miolo
+    .replace(/id="([^"]+)"/g, `id="${prefixo}-$1"`)
+    .replace(/url\(#([^)]+)\)/g, `url(#${prefixo}-$1)`)
+    .replace(/href="#([^"]+)"/g, `href="#${prefixo}-$1"`);
+  for (const [de, para] of Object.entries(trocar)) miolo = miolo.split(`"${de}"`).join(`"${para}"`);
+  return `<svg x="${x}" y="${y}" width="${largura}" height="${altura}" viewBox="${viewBox}" ${extra}>${miolo.trim()}</svg>`;
 }
 
 // Atalhos ANSI para escrever as cenas
@@ -202,7 +228,30 @@ const _ = '\x1b[0m';
 // ---------------------------------------------------------------------
 // Cenas
 // ---------------------------------------------------------------------
-// Card: o modelo de dados do app, copiado de script.js.
+// Arte: uma estante com os livros cadastrados nas capturas, o selo Read/Unread
+// de cada um e o Odin do próprio repo (img/odin-logo.svg).
+const livros = [
+  ['O Hobbit', '#a78347', 150, true],
+  ['Dom Casmurro', '#4a4540', 170, false],
+  ['1984', '#ccad7a', 132, true],
+  ['O Pequeno Príncipe', '#7c756c', 186, false],
+  ['Grande Sertão', '#8b5e34', 160, false],
+];
+let x = 0;
+const lombadas = livros
+  .map(([titulo, cor, altura, lido], i) => {
+    const largura = [44, 50, 38, 56, 46][i];
+    const topo = 250 - altura;
+    const s = `
+    <rect x="${x}" y="${topo}" width="${largura}" height="${altura}" rx="3" fill="${cor}"/>
+    <rect x="${x}" y="${topo + 12}" width="${largura}" height="3" fill="#f6f1e9" opacity=".5"/>
+    <text transform="translate(${x + largura / 2 + 5},${250 - 14}) rotate(-90)" font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="13" font-weight="600" fill="#f6f1e9">${titulo}</text>
+    <circle cx="${x + largura / 2}" cy="${topo - 12}" r="6" fill="${lido ? '#2f9e44' : '#e03131'}"/>`;
+    x += largura + 6;
+    return s;
+  })
+  .join('');
+
 banner({
   arquivo: 'banner.svg',
   titulo: 'The Odin Library',
@@ -214,23 +263,15 @@ banner({
     { texto: 'Lido / não lido', fundo: 'rgba(204,173,122,.25)', cor: '#f6f1e9' },
     { texto: 'Remover', fundo: 'rgba(204,173,122,.25)', cor: '#f6f1e9' },
   ],
-  card: {
-    fundo: '#0d1117',
-    conteudo: cardTerminal({
-      titulo: 'script.js',
-      linhas: [
-        `${az}class${_} ${am}Book${_} {`,
-        `  ${az}constructor${_}(title, author, read = ${c}false${_}) {`,
-        `    ${az}this${_}.title = title;`,
-        `    ${az}this${_}.author = author;`,
-        `    ${az}this${_}.read = read;`,
-        `  }`,
-        ``,
-        `  ${mg}toggleRead${_}() {`,
-        `    ${az}this${_}.read = !${az}this${_}.read;`,
-        `  }`,
-        `}`,
-      ],
-    }),
-  },
+  arte: `
+  <g transform="translate(740,52)">
+    <rect x="-20" y="250" width="440" height="14" rx="3" fill="#f6f1e9"/>
+    <rect x="-20" y="264" width="440" height="8" fill="#000000" opacity=".15"/>
+    ${lombadas}
+    ${svgArquivo('img/odin-logo.svg', { x: 300, y: 70, largura: 110, altura: 150 })}
+    <g font-family="'IBM Plex Sans',system-ui,sans-serif" font-size="12" font-weight="600">
+      <circle cx="4" cy="6" r="6" fill="#2f9e44"/><text x="16" y="10" fill="#f6f1e9">Read</text>
+      <circle cx="70" cy="6" r="6" fill="#e03131"/><text x="82" y="10" fill="#f6f1e9">Unread</text>
+    </g>
+  </g>`,
 });
